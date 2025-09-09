@@ -12,7 +12,8 @@ def load_test_history(app) -> None:
 
 def load_history_data(app) -> None:
     """Load test history data from logs directory with detailed information"""
-    logs_dir = os.path.join(os.path.dirname(__file__), "logs")
+    # Read logs from project root (same place the runner writes to)
+    logs_dir = os.path.join(os.getcwd(), "logs")
     if not os.path.exists(logs_dir):
         return
 
@@ -48,15 +49,31 @@ def load_history_data(app) -> None:
                 project = summary.get("project", "GOOGLE")
                 mode = summary.get("mode", "headless")
 
-                # Get status with proper mapping
-                status = "Failed"
-                if summary.get("status") == "ok":
+                # Get status with proper mapping (support current runner values)
+                raw_status = str(summary.get("status", "")).lower()
+                if raw_status in {"passed", "success", "ok"}:
                     status = "Success"
-                elif summary.get("status") == "success":
-                    status = "Success"
+                elif raw_status in {"aborted"}:
+                    status = "Aborted"
+                else:
+                    status = "Failed"
 
-                # Get duration
+                # Get duration (fallback to compute from steps if not provided)
                 duration = summary.get("durationSec", 0)
+                if not duration:
+                    try:
+                        steps = summary.get("steps", []) or []
+                        if steps:
+                            start_ts = steps[0].get("start")
+                            end_ts = None
+                            for s in reversed(steps):
+                                end_ts = s.get("end") or end_ts
+                                if end_ts:
+                                    break
+                            if start_ts and end_ts:
+                                duration = max(0.0, float(end_ts) - float(start_ts))
+                    except Exception:
+                        duration = 0
                 duration_str = f"{duration:.1f}s"
 
                 # Create detailed error information
@@ -119,7 +136,8 @@ def load_history_data(app) -> None:
 def clear_all_logs(app) -> None:
     """Delete all files and folders under the logs directory and refresh UI."""
     try:
-        logs_dir = os.path.join(os.path.dirname(__file__), "logs")
+        # Use the same logs location as the runner/history loader
+        logs_dir = os.path.join(os.getcwd(), "logs")
         if os.path.exists(logs_dir):
             for name in os.listdir(logs_dir):
                 path = os.path.join(logs_dir, name)

@@ -1,0 +1,135 @@
+{
+  "PROJECT_CONFIG": {
+    "name": "THATCONCEPTSTORE"
+  },
+  "TEST_STEPS": [
+    {
+      "name": "Go to TCS women on-sale",
+      "action": "navigate",
+      "url": "https://www.thatconceptstore.com/en-ae/c/women/on-sale?gender=Women&nocache=2544"
+    },
+    {
+      "name": "Wait product list anchor",
+      "action": "wait",
+      "selector": ".slot-ProductListSlot a[href*=\"/product/\"]",
+      "timeout": 40
+    },
+    {
+      "name": "Accept cookies if visible",
+      "action": "click",
+      "selector": "#onetrust-accept-btn-handler",
+      "timeout": 5,
+      "critical": false
+    },
+    {
+      "name": "Open first product link",
+      "action": "click",
+      "selector": ".slot-ProductListSlot a[href*=\"/product/\"]",
+      "timeout": 40
+    },
+    {
+      "name": "Wait add to cart button",
+      "action": "wait",
+      "selector": ".product-add-to-cart",
+      "timeout": 20
+    },
+    {
+      "name": "Add to cart",
+      "action": "click",
+      "selector": ".product-add-to-cart",
+      "timeout": 20
+    },
+    {
+      "name": "Wait mini go to cart",
+      "action": "wait",
+      "selector": ".mini-go-to-cart",
+      "timeout": 40
+    },
+    {
+      "name": "Open mini cart",
+      "action": "click",
+      "selector": ".mini-go-to-cart",
+      "timeout": 40
+    },
+    {
+      "name": "Wait checkout button",
+      "action": "wait",
+      "selector": ".slot-CenterRightContentSlot .checkout-button",
+      "timeout": 40
+    },
+    {
+      "name": "Go to checkout",
+      "action": "click",
+      "selector": ".slot-CenterRightContentSlot .checkout-button",
+      "timeout": 40
+    },
+    {
+      "name": "Wait login button",
+      "action": "wait",
+      "selector": "a[href*=\"returnTo\"].login-button",
+      "timeout": 40
+    },
+    {
+      "name": "Open login",
+      "action": "click",
+      "selector": "a[href*=\"returnTo\"].login-button",
+      "timeout": 40
+    },
+    {
+      "name": "Wait email field",
+      "action": "wait",
+      "selector": "#email",
+      "timeout": 10
+    },
+    {
+      "name": "Fill email",
+      "action": "fill",
+      "selector": "#email",
+      "value": "$EMAIL",
+      "timeout": 20
+    },
+    {
+      "name": "Fill password",
+      "action": "fill",
+      "selector": "#password",
+      "value": "$PASSWORD",
+      "timeout": 20
+    },
+    {
+      "name": "Submit login",
+      "action": "click",
+      "selector": "#submit-button",
+      "timeout": 20
+    },
+    {
+      "name": "Wait card number field",
+      "action": "wait",
+      "selector": "#cardNumber",
+      "timeout": 40
+    },
+    {
+      "name": "Go to cart page",
+      "action": "click",
+      "selector": "a[href*=\"cart\"]",
+      "timeout": 40
+    },
+    {
+      "name": "Wait delete item button",
+      "action": "wait",
+      "selector": ".cart-delete-item",
+      "timeout": 40
+    },
+    {
+      "name": "Delete item from cart",
+      "action": "click",
+      "selector": ".cart-delete-item",
+      "timeout": 40
+    },
+    {
+      "name": "Wait empty cart state",
+      "action": "wait",
+      "selector": ".slot-EmptyCartMiddleContentSlot > div",
+      "timeout": 40
+    }
+  ]
+}

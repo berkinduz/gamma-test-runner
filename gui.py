@@ -122,6 +122,12 @@ class TestRunnerGUI:
         # Apply initial button states
         self.update_button_states()
 
+        # Populate history immediately on startup
+        try:
+            self.load_history_data()
+        except Exception:
+            pass
+
         # Start log consumer
         self.root.after(100, lambda: self.consume_logs())
 

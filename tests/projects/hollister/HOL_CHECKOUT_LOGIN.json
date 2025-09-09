@@ -1,0 +1,152 @@
+{
+  "PROJECT_CONFIG": {
+    "name": "HOLLISTER"
+  },
+  "TEST_STEPS": [
+    {
+      "name": "Go to Hollister womens new arrivals",
+      "action": "navigate",
+      "url": "https://www.hollisterco.sa/en/c/womens/womens-new-arrivals?nocache=322435"
+    },
+    {
+      "name": "Wait product tile exists",
+      "action": "wait",
+      "selector": "#HOLResponsiveProductProductListComponent a[href*=\"/product/\"]:first-child",
+      "timeout": 40
+    },
+    {
+      "name": "Open first product",
+      "action": "click",
+      "selector": "#HOLResponsiveProductProductListComponent a[href*=\"/product/\"]:first-child",
+      "timeout": 40
+    },
+    {
+      "name": "Wait size button enabled",
+      "action": "wait",
+      "selector": "#HolProductVariantSelector div.size-qualifier button:not([disabled])",
+      "timeout": 40
+    },
+    {
+      "name": "Select first available size",
+      "action": "click",
+      "selector": "#HolProductVariantSelector div.size-qualifier button:not([disabled])",
+      "timeout": 40
+    },
+    {
+      "name": "Add to cart",
+      "action": "click",
+      "selector": "#HolProductAddToCartComponent button",
+      "timeout": 40
+    },
+    {
+      "name": "Wait mini cart link",
+      "action": "wait",
+      "selector": "#HolViewMiniCartLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Open mini cart",
+      "action": "click",
+      "selector": "#HolViewMiniCartLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Wait checkout button",
+      "action": "wait",
+      "selector": "#HolCheckoutButtonCMSLink",
+      "timeout": 40
+    },
+    {
+      "name": "Go to checkout",
+      "action": "click",
+      "selector": "#HolCheckoutButtonCMSLink",
+      "timeout": 40
+    },
+    {
+      "name": "Wait login link",
+      "action": "wait",
+      "selector": "#HolUserLoginLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Open login panel",
+      "action": "click",
+      "selector": "#HolUserLoginLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Wait email field",
+      "action": "wait",
+      "selector": "#email",
+      "timeout": 40
+    },
+    {
+      "name": "Fill email",
+      "action": "fill",
+      "selector": "#email",
+      "value": "$EMAIL",
+      "timeout": 40
+    },
+    {
+      "name": "Fill password",
+      "action": "fill",
+      "selector": "#password",
+      "value": "$PASSWORD",
+      "timeout": 40
+    },
+    {
+      "name": "Submit login",
+      "action": "click",
+      "selector": "#submit-button",
+      "timeout": 40
+    },
+    {
+      "name": "Wait card number field",
+      "action": "wait",
+      "selector": "#cardNumber",
+      "timeout": 40
+    },
+    {
+      "name": "Wait header cart button",
+      "action": "wait",
+      "selector": "button#HolHeaderCartLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Open header cart",
+      "action": "click",
+      "selector": "button#HolHeaderCartLinkComponent",
+      "timeout": 40
+    },
+    {
+      "name": "Wait view cart link",
+      "action": "wait",
+      "selector": "#HolViewCartLinkComponentHolder a",
+      "timeout": 20
+    },
+    {
+      "name": "Go to cart page",
+      "action": "click",
+      "selector": "#HolViewCartLinkComponentHolder a",
+      "timeout": 20
+    },
+    {
+      "name": "Wait remove button",
+      "action": "wait",
+      "selector": "#HolCartItemsComponent button",
+      "timeout": 40
+    },
+    {
+      "name": "Remove item from cart",
+      "action": "click",
+      "selector": "#HolCartItemsComponent button",
+      "timeout": 40
+    },
+    {
+      "name": "Wait empty cart state",
+      "action": "wait",
+      "selector": ".empty-cart",
+      "timeout": 40
+    }
+  ]
+}
